@@ -1,172 +1,133 @@
-// promises an example
+// Async and await
+// Fetch()  API
 
-// function Suman(data) {
+//Example-1
+
+// async function Suman(){
+//     return "suman gangopadhyay";
+// }
+// console.log(Suman());
+
+// Suman().then(function(data){
 //     console.log(data);
+// });
+
+//Exapmle-2
+
+// async function Suman(data){
+//     return "suman gangopadhyay"+" "+data;
+// }
+// console.log(Suman());
+
+// Suman('bangalore').then(function(data){
+//     console.log(data);
+//     document.write(data);
+// });
+
+
+// Write the same code in arrow Function
+
+// let suman = async() => {
+//     return "I live in Delhi";
 // }
 
-// //create a promise
-// let suman_promise = new Promise(function(resolve, reject) {
-//     //promise code body 
-//     let number = 99;
+// suman().then(data=>console.log(data));
+
+///////////////////////////////////////////////////////////////////
+
+//even or odd using async function
+
+// async function Suman(){
+//     let number = 56;
 //     if(number%2 == 0){
-//         resolve("EVEN NUMBER");
-//     }else {
-//         reject("ODD NUMBER");
-//     }
-// });
-
-// //call the promise , PROMISE CONSUMING CODE
-// suman_promise.then(
-//     function(value) {
-//         //when the promise is successfull
-//         Suman(value);
-//     },
-//     function(error) {
-//         // when the promise is failure
-//         Suman(error);
-//     }
-// );
-
-
-// let my_promise = new Promise(function(resolve, reject) {
-//     let condition = Even;
-//     if(condition is met) {
-//         resolve("when the promise is kept and fulfilled")
+//         return "Even number";
 //     } else{
-//         reject("when the promise is not kept");
+//         return "odd number";
 //     }
-// });
+// }
+// console.log(Suman());
 
-////////////////////////////////////////////////////////////////
-
-//CODE without promise & callback also
-
-// const url = "https://api.thedogapi.com/v1/breeds";
-// //Display function
-// function Suman(data) {
+// Suman().then(function(data){
 //     console.log(data);
+// })
+
+//even or odd using arrow function
+
+// let EvenOdd = async() => {
+//     let number = 98;
+//     if(number%2 == 0){
+//         return "Even number";
+//     } else {
+//         return "odd number"
+//     }
 // }
 
-// //fetching the data from the API
-
-// function Guvi(url, my_callback_function){
-//     let request = new XMLHttpRequest();
-//     request.open("GET", url);
-//     request.onload = function(){
-//         if(request.status == 200){
-//             my_callback_function(this.responseText);
-//         } else {
-//             my_callback_function(request.status);
-//         }
-//     };
-//     request.send();
-// }
-
-// //calling the callback function Guvi() which calls Suman() Function as an argument
-
-// Guvi(url, Suman);
+// EvenOdd().then(data=> console.log(data));
 
 ////////////////////////////////
 
-//SAME CODE WITH PROMISE
-
-// let suman_promise = new Promise(function (resolve, reject) {
-//     // code to be executed 
-
-//     let request = new XMLHttpRequest();
-//     request.open("GET", url);
-//     request.onload = function(){
-//         if(request.status == 200){
-//             resolve(request.responseText);
-//         } else {
-//             reject(request.status);
-//         }
-//     };
-//     request.send();
-// });
-
-// suman_promise.then(
-//     function (value) {
-//       Suman(value);
-//     },
-//     function (error) {
-//       Suman(error);
-//     }
-//   );
-
-////////////////////////////////////////////////////////////////
-
-// const url = "https://pokeapi.co/api/v2/pokemon?limit=50";
-
-// function Suman(data) {
-//     let Suman = document.getElementById("suman");
-//     // document.getElementById("suman").innerHTML = JSON.stringify(data);
-
-//     Suman.innerHTML = data;
+// async function Suman(){
+//     let data = await "my name is suman and iam from the async AWAIT world!";
 //     console.log(data);
 // }
+// console.log("pizza");
+// Suman();
+// console.log("Burger")
+
+// ///////
+// const guvi = async () => {
+//     let info = await "Hello iam from Guvi!";
+//     console.log(info);
+// }
+// console.log('A');
+// guvi();
+// console.log('B');
+
+
+////////////////////////////////
+
+// Promise Chaining
 
 // let suman_promise = new Promise(function (resolve, reject) {
-//     //     // code to be executed 
-    
-//         let request = new XMLHttpRequest();
-//         request.open("GET", url);
-//         request.onload = function(){
-//             if(request.status == 200){
-//                 resolve(request.responseText);
-//             } else {
-//                 reject(request.status);
-//             }
-//         };
-//         request.send();
+//     let data = "nitin";
+//     resolve(data + " " + "is the project manager");
+//     reject(data + " " + "outsider");
+//   });
+  
+//   suman_promise
+//     .then((value) => {
+//       console.log("promise fulfilled");
+//     })
+//     .catch((error) => {
+//       console.log("promise rejected");
+//     })
+//     .finally(() => {
+//       console.log("DEAL Closed !!");
 //     });
-    
-//     suman_promise.then(
-//         function (value) {
-//           Suman(value);
-//         },
-//         function (error) {
-//           Suman(error);
-//         }
-//       );
-////////////////////////////////////////////////////////////////
 
+////////
 
-//  how to write a Promise in more Professional Way !
+// // Fetch Data from Github API using Promise Chaining
+// const url = "https://api.github.com/users/";
 
-// const url = "https://restcountries.com/v3.1/all";
+// // function will load the data from the URL
+// function load_data(url) {
+//     return fetch(url).then((response) => response.json());
+// }
 
+// function Suman(name1) {
+//     return load_data(`https://api.github.com/users/${name1}`);
+// }
 
-// function Suman(url) {
-//     let suman_promise = new Promise(function (resolve, reject) {
-//       let request = new XMLHttpRequest();
-//       request.open("GET", url);
-//       request.onload = function () {
-//         if (request.status == 200) {
-//           resolve(request.responseText);
-//         } else {
-//           reject("Error happened in your Program !");
-//         }
-//       };
-//       request.send();
+// function display(url) {
+//     return new Promise(function(response, reject){
+//         let github_pic = document.createElement("img");
+//         github_pic.src = url.avatar_url;
+//         document.body.append(github_pic);
 //     });
-//     return suman_promise;
-//   }
-  
-//   let promise = Suman(url);
-  
-//   const suman_promise_consumer = () => {
-//     promise.then(
-//       (result) => {
-//         console.log({ result });
-//       },
-//       (error) => {
-//         console.log("ERROR : Error with the URL" + error);
-//       }
-//     );
-//   };
-  
-//   suman_promise_consumer();
+// }
 
-
-  
+// // loading the data into the HTML
+// load_data(url)
+//   .then((user) => Suman('sgangopadhyay'))
+//   .then(display)
